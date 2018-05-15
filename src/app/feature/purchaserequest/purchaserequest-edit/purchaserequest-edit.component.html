@@ -1,0 +1,56 @@
+<app-menu></app-menu>
+<div>
+</div>
+<div class='component-content'>
+  <div>
+    <span class='component-title'>{{title}}</span>
+    <!-- | <span><a routerLink='/product/create'>New Product</a></span> -->
+    | <span><a routerLink='/purchaserequest/list'>Back to list</a></span>
+  </div>
+  <p *ngIf='undefined'>Loading ...</p>
+  <div *ngIf='request'>
+    <div class='form-group row'>
+      <label class='col-form-label col-sm-2' for="purchaserequestuser">User:</label>
+      <input [(ngModel)]='request.User.UserName' type="text" class="form-control col-sm-6" id="purchaserequestuser" aria-describedby="unameHelp" placeholder="UserName">
+      <small id="unameHelp" class="form-text text-muted col-sm-2">UserName</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="requestdescription">Description:</label>
+      <input [(ngModel)]='request.Description' name='Description' type="text" class="form-control col-sm-6" id="requestdescription" aria-describedby="descHelp" placeholder="PartNumber"> 
+      <small id="descHelp" class="form-text text-muted col-sm-2">Description</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="justification">Justification:</label>
+      <input [(ngModel)]='request.Justification' name='Justification' type="text" class="form-control col-sm-6" id="justification" aria-describedby="justHelp" placeholder="Justification">
+      <small id="justHelp" class="form-text text-muted col-sm-2">Justification</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="dateneeded">Date Needed:</label>
+      <input [(ngModel)]='request.DateNeeded' name='DateNeeded' type="text" class="form-control col-sm-6" id="dateneeded" aria-describedby="neededHelp" placeholder="DateNeeded">
+      <small id="neededHelp" class="form-text text-muted col-sm-2">Date Needed</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="deliverymode">Delivery Mode:</label>
+      <input [(ngModel)]='request.DeliveryMode' name='DeliveryMode' type="text" class="form-control col-sm-6" id="DeliveryMode" aria-describedby="dmodeHelp" placeholder="DeliveryMode">
+      <small id="dmodeHelp" class="form-text text-muted col-sm-2">Delivery Mode</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="requeststatus">Status:</label>
+      <input [(ngModel)]='request.Status' name='RequestStatus' type="text" class="form-control col-sm-6" id="requeststatus" aria-describedby="statusHelp" placeholder="RequestStatus" disabled>
+      <small id="statusHelp" class="form-text text-muted col-sm-2">Status</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="requesttotal">Total:</label>
+      <input [(ngModel)]='request.Total' name='RequestTotal' type="text" class="form-control col-sm-6" id="requesttotal" aria-describedby="totalHelp" placeholder="RequestTotal" disabled>
+      <small id="totalHelp" class="form-text text-muted col-sm-2">Total</small>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="datesubmitted">Date Submitted:</label>
+      <input [(ngModel)]='request.SubmittedDate' name='DateSubmitted' type="text" class="form-control col-sm-6" id="DateSubmitted" aria-describedby="submitHelp" placeholder="DateSubmitted" disabled>
+      <small id="submitHelp" class="form-text text-muted col-sm-2">Date Submitted</small>
+    </div>
+    <div class='form-group'>
+      <button title="Update Request" (click)='change()' class='btn btn-primary'>Update</button>
+    </div>
+  </div>
+</div>

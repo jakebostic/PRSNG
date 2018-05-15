@@ -1,0 +1,59 @@
+<app-menu></app-menu>
+<div>
+</div>
+<div class='component-content'>
+  <div>
+    <span class='component-title'>[{{title}}]</span>
+    <span><a routerLink='/purchaserequest/list'>Back to list</a></span>
+  </div>
+  <p *ngIf='!request'>Loading ...</p>
+  <div *ngIf='request'>
+    <table class='table table-striped'>
+      <tr>
+        <th>ID:</th>
+        <th>Description:</th>
+        <th>Status:</th>
+        <th>Total:</th>
+      </tr>
+      <tr>
+        <td>{{ request.Id }}</td>
+        <td>{{ request.Description }}</td>
+        <td>{{ request.Status }}</td>
+        <td>{{ request.Total | currency }}</td>
+      </tr>
+    </table>
+    <p></p>
+    <table *ngIf='lines' class="table table-striped">
+      <tr>
+        <span class='component-title'>[Lines]</span>
+        <a routerLink='/purchaserequestlineitem/create/{{request.Id}}'>
+            <img src='assets/add-icon.png' width='20' height='20' >
+        </a>
+      </tr>
+      <tr>
+        <th>ID:</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Line Total</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor='let prline of lines'>
+        <td>{{ prline.Id }}</td>
+        <td *ngIf='prline.Product'>{{ prline.Product.Name }}</td>
+        <td>{{ prline.Quantity }}</td>
+        <td *ngIf='prline.Product'>{{ prline.Product.Price | currency }}</td>
+        <td *ngIf='prline.Product'>{{ prline.Product.Price * prline.Quantity | currency }}</td>
+        <td>
+          <a routerLink='/purchaserequestlineitem/edit/{{prline.Id}}/{{request.Id}}'>
+            <img width='20' height='20' src='assets/pencil-icon.png'></a>
+          <a routerLink='/purchaserequest/linedel/{{request.Id}}/{{prline.Id}}'>
+            <img width='20' height='20' src='assets/delete.jpg'></a>
+        </td>
+      </tr>
+    </table>
+    <div *ngIf="lines && lines.length > 0" class='form-group'>
+      <button (click)='submitForReview()' class='btn btn-primary'>Submit For Review</button>
+    </div>
+  </div>
+</div>

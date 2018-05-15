@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div class='component-content'>
+  <div class=''>
+    <div class='lefthalf'>
+      <span class='component-title'><b>{{title}}</b></span>
+    </div>
+  </div>
+  <p *ngIf='!requests'>Loading ...</p>
+  <table class='table table-striped' *ngIf='requests'>
+    <tr>
+      <th>Id</th>
+      <th>UserName</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Submitted Date</th>
+      <th>Date Needed</th>
+      <th>Total</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor='let pr of requests'>
+      <td>{{pr.Id}}</td>
+      <td>{{pr.UserName}}</td>
+      <td>{{pr.Description}}</td>
+      <td>{{pr.Status}}</td>
+      <td>{{pr.SubmittedDate}}</td>
+      <td>{{pr.DateNeeded}}</td>
+      <td>{{pr.Total | currency}}</td>
+          <td class='actions'>
+            <a routerLink='/purchaserequest/approve/{{pr.Id}}'><img src='assets/review.png'  width='25' height='25' title='Detail'></a>
+          </td>
+    </tr>
+  </table>
+</div>

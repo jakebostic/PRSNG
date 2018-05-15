@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+   <span class="badge badge-secondary">PRS</span>
+    <li *ngFor='let menu of menuItems' title='{{ menu.tooltip }}'><a routerLink='{{ menu.href }}'>{{ menu.display }}</a>
+    </li>
+    <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+  </ul>
+</nav>
+
+

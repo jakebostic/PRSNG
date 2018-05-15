@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div>
+</div>
+<div class='component-content'>
+  <div>
+    <span class='component-title'>{{ title }}</span> | <span><a routerLink='/purchaserequest/lines/{{prid}}'>Back to list</a></span>
+  </div>
+  <p *ngIf='!prli'>Loading ...</p>
+
+  <div *ngIf='prli'>
+    <div class='form-group row'>
+      <label class='col-form-label col-sm-2' for="purchaserequestlineitemProduct">Product:</label>
+      <select [(ngModel)]='prli.Product.Id' [compareWith]='compareFn' class='form-control col-sm-6' name='Product' id="purchaserequestlineitemProduct">
+					<option *ngFor="let p of products" [ngValue]="p.Id" [selected]='p.Id == prli.Product.Id'>{{ p.Name }}</option>
+				</select>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="purchaserequestlineitemquantity">Quantity:</label>
+      <input [(ngModel)]='prli.Quantity' name='Quantity' type="number" class="form-control col-sm-6" id="purchaserequestlineitemquantity" aria-describedby="qtyHelp" placeholder="Quantity">
+      <small id="qtyHelp" class="form-text text-muted col-sm-2">Quantity</small>
+    </div>
+    <div class='form-group'>
+      <button (click)='change()' class='btn btn-primary'>Change</button>
+    </div>
+  </div>
+</div>

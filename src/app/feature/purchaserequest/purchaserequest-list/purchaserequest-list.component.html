@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<div class="component-content">
+  <div class="lefthalf">
+    <span class="component-title"><b>{{ title }}</b></span>
+    <span><a routerLink='/purchaserequest/create'>
+        <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
+        </span>
+  </div>
+</div>
+<p *ngIf='!requests'>Loading ...</p>
+<table class='table table-striped' *ngIf='requests'>
+  <tr>
+    <th>ID</th>
+    <th>User</th>
+    <th>Description</th>
+    <th>Date Needed</th>
+    <th>Status</th>
+    <th>Total</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor='let pr of requests'>
+    <td>{{ pr.Id }}</td>
+    <td>{{ pr.User.UserName }}</td>
+    <td>{{ pr.Description }}</td>
+    <td>{{ pr.DateNeeded }}</td>
+    <td>{{ pr.Status }}
+    <td>{{ pr.Total | currency}}</td>
+        <td class='actions'>
+          <a routerLink='/purchaserequest/detail/{{pr.Id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+          <a routerLink='/purchaserequest/edit/{{pr.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+          <a routerLink='/purchaserequest/lines/{{pr.Id}}'><img src="assets/lines.png" width='20' height='18' title='Line Items'></a>
+        </td>
+  </tr>
+</table>

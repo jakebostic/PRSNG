@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<div class="component-content">
+  <div class="lefthalf">
+    <span class="component-title"><b>{{ title }}</b></span>
+    <span><a routerLink='/vendor/create'>
+        <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
+        </span>
+  </div>
+</div>
+<p *ngIf='!vendors'>Loading ...</p>
+<table class='table table-striped' *ngIf='vendors'>
+  <tr>
+    <th>ID</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Pre Approved</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor='let v of vendors'>
+    <td>{{ v.Id }}</td>
+    <td>{{ v.Code }}</td>
+    <td>{{ v.Name }}</td>
+    <td>{{ v.Address }}</td>
+    <td>{{ v.City }}</td>
+    <td>{{ v.State }}</td>
+    <td>{{ v.Zip }}</td>
+    <td>{{ v.PhoneNumber }}</td>
+    <td>{{ v.Email }}</td>
+    <td>{{ v.PreApproved?"Yes":"No" }}</td>
+    <td class='actions'>
+      <a routerLink='/vendor/detail/{{v.Id}}'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
+      <a routerLink='/vendor/edit/{{v.Id}}'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+    </td>
+  </tr>
+</table>
+

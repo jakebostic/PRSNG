@@ -1,0 +1,57 @@
+<app-menu></app-menu>
+<div class='component-content'>
+  <div class=''>
+    <div class='lefthalf'>
+      <span class='component-title'>[{{title}}]</span>
+      <span><a routerLink='/purchaserequest/create'><img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a></span>
+    </div>
+  </div>
+  <table class="table table-striped" *ngIf='request'>
+    <tr>
+      <th>Id</th>
+      <td>{{ request.Id}}</td>
+    </tr>
+    <tr>
+      <th>User</th>
+      <td>{{ request.User.UserName }}</td>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <td>{{ request.Description }}</td>
+    </tr>
+    <tr>
+      <th>Justification</th>
+      <td>{{ request.Justification }}</td>
+    </tr>
+    <tr>
+      <th>Date Needed</th>
+      <td>{{ request.DateNeeded }}</td>
+    </tr>
+    <tr>
+      <th>Delivery Mode</th>
+      <td>{{ request.DeliveryMode }}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>{{ request.Status }}</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>{{ request.Total }}</td>
+    </tr>
+    <tr>
+      <th>Date Submitted</th>
+      <td>{{ request.SubmittedDate }}</td>
+    </tr>
+    <tr>
+      <th>Reason For Rejection</th>
+      <td>{{ request.ReasonForRejection }}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <a routerLink='/purchaserequest/edit/{{request.Id}}' class='btn btn-primary' title='Edit'>Edit</a>
+        <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+      </td>
+    </tr>
+  </table>
+</div>

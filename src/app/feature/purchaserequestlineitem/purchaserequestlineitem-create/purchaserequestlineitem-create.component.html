@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<div>
+</div>
+<div class='component-content'>
+  <div>
+    <span class='component-title' *ngIf='purchaseRequest'>{{ title }} - PR ID: {{ purchaseRequest.Id }}</span> | <span><a routerLink='/purchaserequest/lines/{{prid}}'>Back to list</a></span>
+  </div>
+  <p *ngIf='!prli'>Loading ...</p>
+
+  <div *ngIf='prli'>
+    <div class='form-group row'>
+      <label class='col-form-label col-sm-2' for="purchaserequestProductID">Product:</label>
+        <select [(ngModel)]='prli.Product' class='form-control col-sm-6' name='Product' id="purchaserequestProductID">
+					<option *ngFor="let p of products" [ngValue]="p" >{{ p.Name }} | {{ p.Vendor.Name }}</option>
+				</select>
+    </div>
+    <div class="form-group row">
+      <label class='col-form-label col-sm-2' for="purchaserequestquantity">Quantity:</label>
+      <input [(ngModel)]='prli.Quantity' name='Quantity' type="number" class="form-control col-sm-6" id="purchaserequestquantity" aria-describedby="qtyHelp" placeholder="Quantity">
+      <small id="qtyHelp" class="form-text text-muted col-sm-2">Quantity</small>
+    </div>
+    <div class='form-group'>
+      <button (click)='create()' class='btn btn-primary'>Create</button>
+    </div>
+  </div>
+</div>
